@@ -8,3 +8,11 @@ notebooks/deprecated_model_trainers/*
 
 literature/*
 anno/*
+datas/*
+
+labranchor_v2/labranchor.gencode_v38*
+
+notebooks/*npy
+notebooks/index
+notebooks/junk
+datas/anno/.ipynb_checkpoints/*
