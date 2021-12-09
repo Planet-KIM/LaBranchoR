@@ -1,3 +1,5 @@
+__version__ = 'v0.0.1' 
+
 import sys
 import os
 import numpy as np
@@ -30,6 +32,3 @@ def load_datas(fasta='/home/dwkim/gencode_v19_raw_data/labranchor.gencode_v19.fa
     missing = {key: value for key, value in introns.items() if not value}
     return known, missing
 
-
-k, m = load_datas()
-print(k, m)

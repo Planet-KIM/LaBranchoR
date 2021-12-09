@@ -128,6 +128,7 @@ def read_gtf(gtf):
                     last_exon = start
     return list(coords)
 
+
 def coords_to_fasta(coords, genome, oname):
     with open(oname, 'w') as out:
         for chrom, three, strand in coords:
