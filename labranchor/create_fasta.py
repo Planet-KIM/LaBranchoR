@@ -13,15 +13,14 @@ class Genome:
                 else:
                     seq += line.strip().upper()
 
+
     def get_seq(self, chrom, start, end, strand = '+'):
-        key_hash = [ item for item in range(int(start), int(end))]
-        for k, v in self.genome.items():
-            if int(k.split(":")[1]) in key_hash:
-                seq = v
-        #seq = self.genome[chrom][start:end]
+        seq = self.genome[chrom][start:end]
+        print(seq)
         if strand == '-':
             seq = ''.join(map(self.revcomp, seq[::-1]))
         return seq 
+
 
     @staticmethod
     def revcomp(char):
@@ -81,10 +80,12 @@ def coords_to_fasta(coords, genome, oname):
 def gtf_to_fasta(gtf, genome, oname):
     print("Parsing gtf file at {}".format(gtf))
     coords = read_gtf(gtf)
+    print(f'coords : {coords}')
     print(coords[0])
     print("Found {} 3'ss.".format(len(coords)))
     print("Loading genome fasta file from {}".format(genome))
     genome = Genome(genome)
+    print(f'genome : {genome}')
     print("Writing output to {}".format(oname))
     coords_to_fasta(coords, genome, oname)
     print('Success!')
