@@ -1,0 +1,13 @@
+h5py
+Keras
+Keras-Preprocessing
+matplotlib==3.3.3
+numpy==1.18.5
+pandas==1.1.5
+scikit-learn
+scipy
+seaborn==0.11.1
+tensorboard
+tensorboard-plugin-wit
+tensorflow
+tensorflow-estimator
