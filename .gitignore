@@ -6,6 +6,8 @@ notebooks/.ipynb_checkpoints/*
 notebooks/deprecated/*
 notebooks/deprecated_model_trainers/*
 
+
+notebooks/__pycache__
 literature/*
 anno/*
 datas/*
