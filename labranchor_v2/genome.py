@@ -1,4 +1,5 @@
-L = 70
+import sys
+
 class Genome:
     """
     def __init__(self, fasta_fn):
@@ -133,11 +134,12 @@ def coords_to_fasta(coords, genome, oname):
     with open(oname, 'w') as out:
         for chrom, three, strand in coords:
             if strand == '+':
-                seq = genome.get_seq(chrom, three-L, three, strand)
+                seq = genome.get_seq(chrom, three-70, three, strand)
             else:
-                seq = genome.get_seq(chrom, three+1, three+L+1, strand)
+                seq = genome.get_seq(chrom, three+1, three+70+1, strand)
             out.write(">{}:{}:{}\n".format(chrom, three, strand))
             out.write(seq + '\n')
+
 
 def gtf_to_fasta(gtf, genome, oname):
     print("Parsing gtf file at {}".format(gtf))
@@ -152,8 +154,12 @@ def gtf_to_fasta(gtf, genome, oname):
     coords_to_fasta(coords, genome, oname)
     print('Success!')
 
+
 if __name__ == '__main__':
-    import sys
-    genome, gtf, oname = sys.argv[1:]
+    try:
+        genome, gtf, oname = sys.argv[1:]
+    except ValueError as ve:
+        print(ve)
+        exit()
     gtf_to_fasta(gtf, genome, oname)
 

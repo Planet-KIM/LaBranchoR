@@ -1,0 +1,39 @@
+{
+    "datas" : {
+        "gencode" : { 
+            "default" : "datas/annotation/gencode.v19.introns.bpregion.bed",
+            "v19" : "datas/annotation/gencode.v19.introns.bpregion.bed"
+        },
+        "mercer" : {
+            "introns" : "datas/annotation/introns_to_mercer.tsv",
+            "supplement" : "datas/annotation/mercer.suppdataS2.bed",
+            "datasets" : {
+                "x_valid" : "datas/annotation/mercer/X_valid.npy",
+                "x_train" : "datas/annotation/mercer/X_train.npy",
+                "x_test" : "datas/annotation/mercer/X_test.npy", 
+                "y_valid" : "datas/annotation/mercer/Y_valid.npy",
+                "y_train" : "datas/annotation/mercer/Y_train.npy",
+                "y_test" : "datas/annotation/mercer/Y_test.npy" 
+            }
+        },
+        "taggart" : {
+            "default"  : "datas/annotation/taggart.supptable1.csv",
+            "supplement"  : "datas/annotation/taggart.supptable1.csv"
+        }
+    },
+
+    "models" : {
+        "mercer" : {
+            "default" : "models/2layer.h5",
+            "rebuild" : "models/2layer2.h5"
+        },
+        "complex" : { 
+            "default" : "models/taggart_mercer_2layer.h5"
+        },
+        "extra" : {
+            "cons" : "models/2layer_cons.h5",
+            "phyloP" : "models/2layer_phyloP.h5",
+            "default" : "models/model.h5"
+        }
+    }
+}
