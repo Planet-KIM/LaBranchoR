@@ -6,29 +6,23 @@ to pervasive noise in the experimental data, but as we show in our
 paper, we estimate that LaBranchoR correcty predicts a branchpoint
 for over 90% of 3'ss.**
 
-## Download existing branchpoint annotations
-See our website linked above to download branchpoint predictions
+## 1. Download existing branchpoint annotations
+**See our website linked above to download branchpoint predictions
 for introns in gencode v19 (hg19) or view LaBranchoR predicted
-branchpoints in the UCSC genome browser.
+branchpoints in the UCSC genome browser.**
 
-## Running LaBranchoR
-If having to run the model yourself would stop you from using LaBranchoR,
-please open an issue requesting the desired predictions or contact the
-authors via email.
-
-
+## 2. Running LaBranchoR
 **All of the code and model weights needed to run LaBranchoR are available in
 the 'labranchor' directory. Running LaBranchoR requires keras and numpy to be installed.**
 
 ### Predicting branchpoints
 - Terminal
-The script __init__.py makes predictions for a fasta file of sequences upstream of
-3'ss. It can be invoked with
+  - The script __init__.py makes predictions for a fasta file of sequences upstream of 3'ss.
 ```sh
-python __init__.py weights 'top-bed'/'top'/'all' fasta_file output**
+python __init__.py weights 'top-bed'/'top'/'all' fasta_file output
 ```
 
-#### Description of Parameters
+  -  Description of Parameters (labrachor_v2/__init__.py)
 **weights:**
 ```sh
 The path to the h5 weights file 
@@ -107,3 +101,8 @@ Analysis of secondary structure near branchpoints: notebooks/secondary_*
 
 ## References
 Paggi J.M., Bejerano, G. A sequence-based, deep learning model accurately predicts RNA splicing branchpoints. bioRxiv 185868 (2017). DOI:[10.1101/185868](http://www.biorxiv.org/content/early/2017/09/07/185868)
+
+## Contacts
+If having to run the model yourself would stop you from using LaBranchoR,
+please open an issue requesting the desired predictions or contact the
+authors via email.
