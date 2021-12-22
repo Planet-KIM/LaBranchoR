@@ -1,5 +1,5 @@
 __version__ = 'v0.0.2' 
-
+import traceback
 import sys
 import numpy as np
 from tensorflow.keras.models import load_model
@@ -8,7 +8,7 @@ class labranchor:
     def __init__(self, weights, top, fasta, output):
         try:
             self.L = 70
-            if (weights == None or top == None or fasta == None or output or None):
+            if ((weights == None) or (top == None) or (fasta == None) or (output == None)):
                 raise Exception("Parameter Error")
             if top not in ['all', 'top', 'top-bed']:
                 raise Exception("2nd argument must be 'all', 'top', or 'top-bed'!")
@@ -17,6 +17,7 @@ class labranchor:
             self.fasta = fasta
             self.output = output
         except Exception as e:
+            print(traceback.format_exc())
             self.usage()
 
 
@@ -82,7 +83,7 @@ class labranchor:
 
     def predict(self):
         print(f"Loading sequences from {self.fasta}")
-        names, seqs = self.read_fasta(self.fasta)
+        names, seqs = self.read_fasta()
         print(f"Read {len(names)} sequences")
         
         # one hot encoding
@@ -108,8 +109,6 @@ if __name__ == '__main__':
     except ValueError as ve:
         print(ve)
         exit()
-    
-    print(weights, top, fasta, output)
     
     labranchor_run = labranchor(weights=weights, top=top, fasta=fasta, output=output)
     labranchor_run.predict()
