@@ -6,29 +6,32 @@ to pervasive noise in the experimental data, but as we show in our
 paper, we estimate that LaBranchoR correcty predicts a branchpoint
 for over 90% of 3'ss.**
 
+
 ## 1. Download existing branchpoint annotations
 **See our website linked above to download branchpoint predictions
 for introns in gencode v19 (hg19) or view LaBranchoR predicted
 branchpoints in the UCSC genome browser.**
 
+
 ## 2. Running LaBranchoR
 **All of the code and model weights needed to run LaBranchoR are available in
 the 'labranchor' directory. Running LaBranchoR requires keras and numpy to be installed.**
 
-### Predicting branchpoints
-#### - Terminal
+
+### 2-1). Predicting branchpoints
+#### ■ Terminal
 The script __init__.py makes predictions for a fasta file of sequences upstream of 3'ss.
 ```sh
-python __init__.py weights 'top-bed'/'top'/'all' fasta_file output
+python labranchor_v2/__init__.py weights 'top-bed'/'top'/'all' fasta_file output
 ```
 
-#### - Description of Parameters (labrachor_v2/__init__.py)
-**weights:**
+### 2-2). Description of Parameters (labrachor_v2/__init__.py)
+**1. <weights>**
 - The path to the h5 weights files
   - labranchor/2layer.h5 (original model)
   - labranchor/2layer2.h5 (batch model)
 
-**'top-bed'/'top'/'all':**
+**2. <'top-bed'/'top'/'all'>**
 - top-bed:
   - produces a bed file of predicted branchpoints. 
   - Assumes fasta names are chrom:3'ss_coord:strand (ex. chr1:1000:+)
@@ -37,31 +40,34 @@ python __init__.py weights 'top-bed'/'top'/'all' fasta_file output
 - all:
   - reports a comma seperated list of branchpoint probabilities corresponding to positions -70 to -1 from each 3'ss
 
-**fasta_file:**
+**3. <fasta_file>**
 - Path to a fasta file of sequences upstream of 3'ss. Input sequences are required to be 70 base pairs and should not contain characters other than 'A', 'C', 'G', 'T', or 'N'. Any Ns will be considered A's during prediction.
 
-**output:**
+**4. <output>**
 - Path to the output file. See the above options for formatting.
+
 
 ## 3. Creating 3'ss sequence fasta files
 **The script genome.py can be used to create fasta files suitable for branchpoint prediction for all introns in given gtf file.**
 
-It can be invoked with:
+### 3-1). Running genome
+#### ■ Terminal
 ```sh
-python genome.py genome gtf output
+python labrachor_v2/genome.py <genome> <gtf> <output>
 ```
 
-### Description of Parameters(genome.py)
-**genome:**
+### 3-2). Description of Parameters(genome.py)
+**1. <genome>**
 - A path to a genome fasta file consistent with the gtf file.
 
-**gtf:**
+**2. <gtf>**
 - The path to the gtf file you wish to predict branchpoints in.
 
-**output:**
+**3. <output>**
 - The path to the output fasta file.
 
-## Analysis Included in Paper
+
+## 4. Analysis Included in Paper
 
 Model training: notebooks/train_model.ipynb
 
@@ -77,16 +83,16 @@ Enrichments of ExAC variants: notebooks/ExAC_variant_enrichments.ipynb
 
 Generation of ISM supplmentary data: notebooks/supp_data.ipynb
 
-## Analysis not included in paper
+## 5. Analysis not included in paper
 
 Exploration of nucleotide importances: notebooks/importance.ipynb
 
 Analysis of secondary structure near branchpoints: notebooks/secondary_*
 
-## References
+## 6. References
 Paggi J.M., Bejerano, G. A sequence-based, deep learning model accurately predicts RNA splicing branchpoints. bioRxiv 185868 (2017). DOI:[10.1101/185868](http://www.biorxiv.org/content/early/2017/09/07/185868)
 
-## Contacts
+## 7. Contacts
 If having to run the model yourself would stop you from using LaBranchoR,
 please open an issue requesting the desired predictions or contact the
 authors via email.
