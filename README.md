@@ -16,27 +16,25 @@ branchpoints in the UCSC genome browser.**
 the 'labranchor' directory. Running LaBranchoR requires keras and numpy to be installed.**
 
 ### Predicting branchpoints
-#### Terminal
-**The script __init__.py makes predictions for a fasta file of sequences upstream of 3'ss.**
+#### - Terminal
+The script __init__.py makes predictions for a fasta file of sequences upstream of 3'ss.
 ```sh
 python __init__.py weights 'top-bed'/'top'/'all' fasta_file output
 ```
 
-##### Description of Parameters (labrachor_v2/__init__.py)
+#### - Description of Parameters (labrachor_v2/__init__.py)
 **weights:**
 - The path to the h5 weights files
-```sh
-labranchor/2layer.h5 (original model)
-labranchor/2layer2.h5 (batch model)
-```
+  - labranchor/2layer.h5 (original model)
+  - labranchor/2layer2.h5 (batch model)
 
 **'top-bed'/'top'/'all':**
-- 1. top-bed:
+- top-bed:
   - produces a bed file of predicted branchpoints. 
   - Assumes fasta names are chrom:3'ss_coord:strand (ex. chr1:1000:+)
-- 2. top:
+- top:
   - reports the shift of the top scoring branchpoint from the associated 3'ssfor each fasta entry
-- 3. all:
+- all:
   - reports a comma seperated list of branchpoint probabilities corresponding to positions -70 to -1 from each 3'ss
 
 **fasta_file:**
