@@ -26,12 +26,12 @@ python labranchor_v2/__init__.py weights 'top-bed'/'top'/'all' fasta_file output
 ```
 
 ### 2-2). Description of Parameters (labrachor_v2/__init__.py)
-**1. <weights>**
+**<weights>**
 - The path to the h5 weights files
   - labranchor/2layer.h5 (original model)
   - labranchor/2layer2.h5 (batch model)
 
-**2. <'top-bed'/'top'/'all'>**
+**<'top-bed'/'top'/'all'>**
 - top-bed:
   - produces a bed file of predicted branchpoints. 
   - Assumes fasta names are chrom:3'ss_coord:strand (ex. chr1:1000:+)
@@ -40,10 +40,10 @@ python labranchor_v2/__init__.py weights 'top-bed'/'top'/'all' fasta_file output
 - all:
   - reports a comma seperated list of branchpoint probabilities corresponding to positions -70 to -1 from each 3'ss
 
-**3. <fasta_file>**
+**<fasta_file>**
 - Path to a fasta file of sequences upstream of 3'ss. Input sequences are required to be 70 base pairs and should not contain characters other than 'A', 'C', 'G', 'T', or 'N'. Any Ns will be considered A's during prediction.
 
-**4. <output>**
+**<output>**
 - Path to the output file. See the above options for formatting.
 
 
@@ -57,13 +57,13 @@ python labrachor_v2/genome.py <genome> <gtf> <output>
 ```
 
 ### 3-2). Description of Parameters(genome.py)
-**1. <genome>**
+**<genome>**
 - A path to a genome fasta file consistent with the gtf file.
 
-**2. <gtf>**
+**<gtf>**
 - The path to the gtf file you wish to predict branchpoints in.
 
-**3. <output>**
+**<output>**
 - The path to the output fasta file.
 
 
