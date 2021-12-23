@@ -22,61 +22,47 @@ the 'labranchor' directory. Running LaBranchoR requires keras and numpy to be in
 python __init__.py weights 'top-bed'/'top'/'all' fasta_file output
 ```
 
-  -  Description of Parameters (labrachor_v2/__init__.py)
+- Description of Parameters (labrachor_v2/__init__.py)
 **weights:**
+- The path to the h5 weights files
 ```sh
-The path to the h5 weights file 
-- labranchor/2layer.h5 (original model)
-- labranchor/2layer2.h5 (batch model)
-```
-**'top-bed'/'top'/'all':**
-1. top-bed:
-```sh
-produces a bed file of predicted branchpoints. Assumes
-		 fasta names are chrom:3'ss_coord:strand (ex. chr1:1000:+)
-```
-2. top:
-```sh
-reports the shift of the top scoring branchpoint from the associated 3'ssfor each fasta entry
-```
-3. all:
-```sh
-reports a comma seperated list of branchpoint probabilities corresponding to positions -70 to -1 from each 3'ss
-```
-**fasta_file:**
-```sh
-Path to a fasta file of sequences upstream of 3'ss. Input sequences
-are required to be 70 base pairs and should not contain characters
-other than 'A', 'C', 'G', 'T', or 'N'. Any Ns will be considered A's
-during prediction.
+labranchor/2layer.h5 (original model)
+labranchor/2layer2.h5 (batch model)
 ```
 
+**'top-bed'/'top'/'all':**
+1. top-bed:
+- produces a bed file of predicted branchpoints. 
+- Assumes fasta names are chrom:3'ss_coord:strand (ex. chr1:1000:+)
+2. top:
+- reports the shift of the top scoring branchpoint from the associated 3'ssfor each fasta entry
+3. all:
+-reports a comma seperated list of branchpoint probabilities corresponding to positions -70 to -1 from each 3'ss
+
+**fasta_file:**
+- Path to a fasta file of sequences upstream of 3'ss. Input sequences are required to be 70 base pairs and should not contain characters other than 'A', 'C', 'G', 'T', or 'N'. Any Ns will be considered A's during prediction.
+
 **output:**
-```sh
-Path to the output file. See the above options for formatting.
-```
-### Creating 3'ss sequence fasta files
-The script genome.py can be used to create fasta files suitable for
-branchpoint prediction for all introns in given gtf file.
+- Path to the output file. See the above options for formatting.
+
+## 3. Creating 3'ss sequence fasta files
+**The script genome.py can be used to create fasta files suitable for branchpoint prediction for all introns in given gtf file.**
 
 It can be invoked with:
 ```sh
 python genome.py genome gtf output
 ```
 
-#### Description of Parameters(genome.py)
+### Description of Parameters(genome.py)
 **genome:**
-```sh
-A path to a genome fasta file consistent with the gtf file.
-```
+- A path to a genome fasta file consistent with the gtf file.
+
 **gtf:**
-```sh
-The path to the gtf file you wish to predict branchpoints in.
-```
+- The path to the gtf file you wish to predict branchpoints in.
+
 **output:**
-```sh
-The path to the output fasta file.
-```
+- The path to the output fasta file.
+
 ## Analysis Included in Paper
 
 Model training: notebooks/train_model.ipynb
