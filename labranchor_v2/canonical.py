@@ -56,22 +56,22 @@ def canonical_variant(variant):
         return {"Error" : e } 
 
 
-def write2fasta(intron_70base):
+def write2fasta(intron_70base, output_file):
     variant, fasta = intron_70base
     variant = locus(variant)
-    with open('./variant.fa', 'w') as fasta_file:
+    with open('{output_file}', 'w') as fasta_file:
         fasta_file.write(f'>{variant.chrom}:{variant.chrSta}:{variant.strand}\n{fasta}')
     print('success to write fasta file')
 
 
 if __name__ == '__main__':
     try:
-        variant = sys.argv[1:]
+        variant, output_file = sys.argv[1:]
     except ValueError as ve:
         print(ve)
         exit()
     intron_70base = canonical_variant(variant[0])
-    variant2fasta(intron_70base)
+    variant2fasta(intron_70base, output_file)
     print('success')
 
 #variant="chr11:108389037-108389037 G>A"
