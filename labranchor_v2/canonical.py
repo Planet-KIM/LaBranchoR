@@ -1,4 +1,5 @@
 import json
+import sys
 import re
 import traceback
 from jklib.genome import locus
@@ -63,8 +64,13 @@ def write2fasta(intron_70base):
     print('success to write fasta file')
 
 
-def variant2fasta(variant):
-    intron_70base = canonical_variant(variant)
+if __name__ == '__main__':
+    try:
+        variant = sys.argv[1:]
+    except ValueError as ve:
+        print(ve)
+        exit()
+    intron_70base = canonical_variant(variant[0])
     variant2fasta(intron_70base)
     print('success')
 
