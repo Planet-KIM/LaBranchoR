@@ -65,6 +65,12 @@ def write2fasta(intron_70base, output_file):
 
 
 if __name__ == '__main__':
+    """
+    variant="chr11:108389037-108389037 G>A"
+    variant="chrX:15581390-15581390- G>T"
+    variant="chr11:108365082-108365082+ G>T"
+    python canonical.py <variants> <output_file>
+    """
     try:
         variant, output_file = sys.argv[1:]
     except ValueError as ve:
@@ -73,12 +79,4 @@ if __name__ == '__main__':
     intron_70base = canonical_variant(variant[0])
     variant2fasta(intron_70base, output_file)
     print('success')
-
-#variant="chr11:108389037-108389037 G>A"
-#variant="chrX:15581390-15581390- G>T"
-#variant="chr11:108365082-108365082+ G>T"
-#intron_70base = canonical_variant(variant)
-#variant2fasta(intron_70base)
-
-
 
