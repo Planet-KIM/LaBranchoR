@@ -2,6 +2,7 @@
 
 *~
 *.pyc
+*.ipynb_checkpoints
 notebooks/.ipynb_checkpoints/*
 notebooks/deprecated/*
 notebooks/deprecated_model_trainers/*
